@@ -148,6 +148,23 @@ public class MainActivity extends Activity {
 
         if (exp.getText().length() > 0) {
 
+            String temp = "exp(" + exp.getText().toString() + ")";
+
+            try {
+                Expression e = new ExpressionBuilder(temp).build();
+                result = e.evaluate();
+                exp.setText(Double.toString(result));
+            }
+            catch (ArithmeticException ex) {
+                Context context = getApplicationContext();
+
+                Toast.makeText(context, "Ungültige Rechenoperation!", Toast.LENGTH_LONG).show();
+            }
+            catch (NumberFormatException ex) {
+                Context context = getApplicationContext();
+
+                Toast.makeText(context, "Ungültige Rechenoperation!", Toast.LENGTH_LONG).show();
+            }
         }
     }
 
