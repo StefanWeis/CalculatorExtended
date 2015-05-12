@@ -61,8 +61,12 @@ public class MainActivity extends Activity {
                         catch (ArithmeticException ex) {
                             Context context = getApplicationContext();
 
-                            Toast toast = Toast.makeText(context, "Ungültige Rechenoperation!", Toast.LENGTH_LONG);
-                            toast.show();
+                            Toast.makeText(context, "Ungültige Rechenoperation!", Toast.LENGTH_LONG).show();
+                        }
+                        catch (NumberFormatException ex) {
+                            Context context = getApplicationContext();
+
+                            Toast.makeText(context, "Ungültige Rechenoperation!", Toast.LENGTH_LONG).show();
                         }
                     }
                 }
@@ -244,6 +248,11 @@ public class MainActivity extends Activity {
                 if (ok)
                     exp.append(".");
                 ok = false;
+                break;
+            case R.id.button_pi:
+                if (ok)
+                    exp.append(Double.toString(Math.PI));
+                ok = true;
                 break;
             default:
                 break;
